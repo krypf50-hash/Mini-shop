@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Telegram SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
+    <!-- Стили -->
+    <link rel="stylesheet" href="style.css">
+    
+    <title>🛍️ Магазин в Telegram</title>
+</head>
+<body>
+    <!-- Шапка -->
+    <div class="header">
+        <h1>🛍️ Магазин</h1>
+        <div class="search-box">
+            <input type="text" id="search" placeholder="Поиск товара...">
+            <button onclick="searchProducts()">🔍</button>
+        </div>
+        
+        <!-- Категории -->
+        <div class="categories" id="categories">
+            <button data-category="all" class="active">Все</button>
+            <button data-category="electronics">Электроника</button>
+            <button data-category="clothes">Одежда</button>
+            <button data-category="books">Книги</button>
+            <button data-category="home">Для дома</button>
+        </div>
+        
+        <!-- Сортировка -->
+        <div class="sort">
+            <select id="sort" onchange="sortProducts()">
+                <option value="default">По умолчанию</option>
+                <option value="cheap">Сначала дешевые</option>
+                <option value="expensive">Сначала дорогие</option>
+                <option value="name">По названию</option>
+            </select>
+            
+            <select id="price-filter" onchange="filterByPrice()">
+                <option value="all">Любая цена</option>
+                <option value="0-1000">До 1000 ₽</option>
+                <option value="1001-5000">1000-5000 ₽</option>
+                <option value="5001+">От 5000 ₽</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Товары -->
+    <div class="products" id="product-list"></div>
+
+    <!-- Корзина (появляется справа) -->
+    <div class="cart-panel" id="cart-panel">
+        <div class="cart-header">
+            <h3>🛒 Корзина</h3>
+            <button onclick="closeCart()">×</button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-total">
+            Итого: <span id="total-price">0</span> ₽
+            <button onclick="checkout()">Оформить</button>
+        </div>
+    </div>
+
+    <!-- Кнопка корзины -->
+    <button class="cart-btn" onclick="openCart()">
+        🛒 <span id="cart-count">0</span>
+    </button>
+
+    <!-- ИЗМЕНИТЕ ЭТУ СТРОКУ: -->
+    <script src="app.js"></script>  <!-- было scrypt.js -->
+</body>
+</html>
